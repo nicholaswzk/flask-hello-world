@@ -15,10 +15,17 @@ pipeline {
 			}
 		}
 		stage('SonarQube Analysis') {
-    def scannerHome = tool 'SonarScanner';
-    withSonarQubeEnv() {
-      sh "${scannerHome}/bin/sonar-scanner"
-    }
+            steps {
+                script {
+                    echo '-------- Performing SonarQube Scan --------'
+                    def scannerHome = tool 'SonarQube';
+                    withSonarQubeEnv('SonarQube') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+                       echo "SonarQube Analysis has no errors! Proceeding on!"
+                }
+            }
+        }
+		
   }
     }
-}
