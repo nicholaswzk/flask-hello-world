@@ -14,5 +14,11 @@ pipeline {
                 echo "OWASP DependencyCheck has no errors! Proceeding on!"
 			}
 		}
+		stage('SonarQube Analysis') {
+    def scannerHome = tool 'SonarScanner';
+    withSonarQubeEnv() {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
     }
 }
