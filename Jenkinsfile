@@ -6,7 +6,8 @@ pipeline {
 				script {
 					echo '-------- Performing Build Stage --------'
 					try {
-						sh 'python3 -m run python3 hello.py'
+						sh 'pip install flask'
+						sh 'python3 hello.py'
                         echo "Build has no errors! Proceeding on!"
                     } catch (Exception e) {
                         echo "Build has errors! Please check and verify!"
