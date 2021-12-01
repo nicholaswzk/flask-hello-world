@@ -40,10 +40,10 @@ pipeline {
                 }
             }
         }
-        post {
+    }
+    post {
 		success {
 			dependencyCheckPublisher pattern: 'dependency-check-report.xml'
 		}
 	}
-    }
 }
