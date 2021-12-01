@@ -1,11 +1,18 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
-            steps {
-                echo "test"
+        stage('Build') {
+			steps {
+				script {
+					echo '-------- Performing Build Stage --------'
+					try {
+						sh 'python3 -m run python3 hello.py'
+                        echo "Build has no errors! Proceeding on!"
+                    } catch (Exception e) {
+                        echo "Build has errors! Please check and verify!"
+                    }
+                }
             }
-        }
         stage('OWASP Dependency Check') {
 			steps {
 			    echo '-------- Performing OWASP Dependency Check --------'
@@ -26,6 +33,5 @@ pipeline {
                 }
             }
         }
-		
-  }
     }
+}
