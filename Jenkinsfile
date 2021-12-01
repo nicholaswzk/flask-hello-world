@@ -14,6 +14,7 @@ pipeline {
                     }
                 }
             }
+        }
         stage('OWASP Dependency Check') {
 			steps {
 			    echo '-------- Performing OWASP Dependency Check --------'
