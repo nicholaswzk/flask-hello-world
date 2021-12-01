@@ -17,7 +17,7 @@ pipeline {
         }
         stage('unit test') {
             steps {
-                sh 'python test.py &'
+                sh 'python3 test.py'
             }
         }
         stage('OWASP Dependency Check') {
