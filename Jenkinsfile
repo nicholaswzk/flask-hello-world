@@ -15,6 +15,11 @@ pipeline {
                 }
             }
         }
+        stage('test') {
+            steps {
+                sh 'python test.py'
+            }
+        }
         stage('OWASP Dependency Check') {
 			steps {
 			    echo '-------- Performing OWASP Dependency Check --------'
