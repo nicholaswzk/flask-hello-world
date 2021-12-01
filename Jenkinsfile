@@ -6,5 +6,13 @@ pipeline {
                 echo "test"
             }
         }
+        stage('OWASP Dependency Check') {
+			steps {
+			    echo '-------- Performing OWASP Dependency Check --------'
+				dependencyCheck additionalArguments: '--disableYarnAudit --format HTML --format XML', odcInstallation: 'Default'
+				dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+                echo "OWASP DependencyCheck has no errors! Proceeding on!"
+			}
+		}
     }
 }
